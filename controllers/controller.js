@@ -21,7 +21,10 @@ const getAllListing = async (req, res) => {
             .skip(page_ * limit_)
             .limit(limit_);
 
-        data ? res.json(data) : res.json({ message: 'No listing found' });
+        console.log(data);
+        data && data.length
+            ? res.json(data)
+            : res.json({ message: 'No listing found' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
